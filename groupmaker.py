@@ -5,7 +5,10 @@ from operator import itemgetter
 
 
 def main():
-        print("File name: " + sys.argv[1])
+
+        group_size = int(sys.argv[2])
+
+        print("File name: " + sys.argv[1] + "Group size: " + str(group_size))
 
         rankings = dict()
         people = list()
@@ -26,7 +29,7 @@ def main():
                     rankings[(int(row[0]), idx + 1)] = int(value)
 
         #Generate all combinations of groups and assign values
-        combinations = list(itertools.combinations(people, 2))
+        combinations = list(itertools.combinations(people, group_size))
 
         for group in combinations:
             group_value = 0
@@ -42,7 +45,7 @@ def main():
         sorted_groups = sorted(group_rankings.items(), key=lambda x: x[1], reverse=True)
         while len(sorted_groups) > 0:
             best_group = sorted_groups.pop(0)
-            final_group_list.append(best_group[0])
+            final_group_list.append(best_group)
 
             sorted_groups = list(filter(lambda group: not any(x in list(best_group[0]) for x in list(group[0])), sorted_groups))
 

@@ -1,6 +1,6 @@
 # groupMaker
 
-Creates groups of 2 with data
+Creates groups of n with data
 ```
-py .\groupmaker.py data.csv
+py .\groupmaker.py data10.csv n
 ```
